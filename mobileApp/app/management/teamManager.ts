@@ -1,8 +1,7 @@
-import {DataStore} from './dataStore';
 
 export class TeamManager {
-    constructor() {
-                console.log('starting team MANAGER. ------ ');
+    constructor(private dataStore: DataStore) {
+        console.log('starting team MANAGER. ------ ');
 
     }
 }
