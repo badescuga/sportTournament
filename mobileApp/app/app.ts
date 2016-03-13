@@ -1,5 +1,6 @@
 import {App, Platform} from 'ionic-angular';
 import {TabsPage} from './pages/tabs/tabs';
+import {GeneralManager} from './management/generalManager';
 
 // https://angular.io/docs/ts/latest/api/core/Type-interface.html
 import {Type} from 'angular2/core';
@@ -11,6 +12,7 @@ import {Type} from 'angular2/core';
 })
 export class MyApp {
   rootPage: Type = TabsPage;
+  generalManager = new GeneralManager();
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
