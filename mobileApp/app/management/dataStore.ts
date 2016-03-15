@@ -17,60 +17,85 @@ export class DataStore {
     }
 
     //my player profile
-    getCachedMyProfileData() {
-        return this._localStorage.get('cachedMyProfileData');
+    getCachedMyProfileData():JSON {
+           var temp: string = this._localStorage.get('cachedMyProfileData');
+        if (temp != null) {
+            return JSON.parse(this._localStorage.get('cachedMyProfileData'));
+        }
+        else {
+            return null;
+        }
     }
 
     getCachedMyProfileDataTime() {
         return this._localStorage.get('cachedMyProfileDataTime');
     }
 
-    setCachedMyProfileData(data: any) {
-        this._localStorage.set('cachedMyProfileData', data);
+    setCachedMyProfileData(data: JSON) {
+        this._localStorage.set('cachedMyProfileData', JSON.stringify(data));
         this._localStorage.set('cachedMyProfileDataTime', Date.now().toString()); // not good; should use server time
 
     }
 
 
     //tournament data
-    getCachedTournamentData() {
-        return this._localStorage.get('cachedTournamentData');
+    getCachedTournamentData(): JSON {
+        var temp: string = this._localStorage.get('cachedTournamentData');
+        if (temp != null) {
+            return JSON.parse(this._localStorage.get('cachedTournamentData'));
+        }
+        else {
+            return null;
+        }
     }
 
     getCachedTournamentDataTime() {
         return this._localStorage.get('cachedTournamentDataTime');
     }
 
-    setCachedTournamentData(data: any) {
-        this._localStorage.set('cachedTournamentData', data);
+    setCachedTournamentData(data: JSON) {
+        this._localStorage.set('cachedTournamentData', JSON.stringify(data));
         this._localStorage.set('cachedTournamentDataTime', Date.now().toString()); // not good; should use server time
     }
 
     //team data
-    getCachedTeamData(teamId: string) {
-        return this._localStorage.get('cachedTeamData' + teamId);
+    getCachedTeamData(teamId: string): JSON {
+
+        var temp: string = this._localStorage.get('cachedTeamData' + teamId);
+        if (temp != null) {
+            return JSON.parse(this._localStorage.get('cachedTeamData' + teamId));
+        }
+        else {
+            return null;
+        }
     }
 
     getCachedTeamDataTime(teamId: string) {
         return this._localStorage.get('cachedTeamDataTime' + teamId);
     }
 
-    setCachedTeamData(teamId: string, data: any) {
-        this._localStorage.set('cachedTeamData' + teamId, data);
+    setCachedTeamData(teamId: string, data: JSON) {
+        this._localStorage.set('cachedTeamData' + teamId, JSON.stringify(data));
         this._localStorage.set('cachedTeamDataTime' + teamId, Date.now().toString()); // not good; should use server time
     }
 
     //player data
-    getCachedPlayerData(playerId: string) {
-        return this._localStorage.get('cachedPlayerData' + playerId);
+    getCachedPlayerData(playerId: string): JSON {
+        var temp: string = this._localStorage.get('cachedPlayerData' + playerId);
+        if (temp != null) {
+            return JSON.parse(this._localStorage.get('cachedPlayerData' + playerId));
+        }
+        else {
+            return null;
+        }
     }
 
-    getCachedPlayerDataTime(playerId: string) {
+    getCachedPlayerDataTime(playerId: string): string {
         return this._localStorage.get('cachedPlayerDataTime' + playerId);
     }
 
-    setCachedPlayerData(playerId: string, data: any) {
-        this._localStorage.set('cachedPlayerData' + playerId, data);
+    setCachedPlayerData(playerId: string, data: JSON) {
+        this._localStorage.set('cachedPlayerData' + playerId, JSON.stringify(data));
         this._localStorage.set('cachedPlayerDataTime' + playerId, Date.now().toString()); // not good; should use server time
     }
 

@@ -20,10 +20,11 @@ export class GeneralService {
     private API_MY_PROFILE = this.API_PATH + '/Player/GetMyProfile';
     /////////////////////////////////////////
 
-    myPlayerProfile: any = this._dataStore.getCachedMyProfileData();
+    myPlayerProfile: JSON = this._dataStore.getCachedMyProfileData();
 
     
     UpdateMyPlayerProfile(failCallback) {
+       // console.dir(this.myPlayerProfile);
         jQuery.ajax({
             url: this.API_MY_PROFILE,
             headers: { 'AuthToken': this._dataStore.getAuthToken() },
