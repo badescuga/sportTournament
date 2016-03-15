@@ -9,8 +9,8 @@ export class GeneralService {
 
     //testing
     someNumber: number = 3;
-    
-    dataStore : DataStore = new DataStore();
+
+    private _dataStore: DataStore = new DataStore();
 
     /////////////////API REQUESTS DEFINITION
     //constants, will be moved in a safe&build oriented place at some point
@@ -20,15 +20,21 @@ export class GeneralService {
     private API_MY_PROFILE = this.API_PATH + '/Player/GetMyProfile';
     /////////////////////////////////////////
 
-    myPlayerProfile: JSON;
+    myPlayerProfile: any = this._dataStore.getCachedMyProfileData();
 
-    UpdateMyPlayerProfile() {
+    
+    UpdateMyPlayerProfile(failCallback) {
         jQuery.ajax({
             url: this.API_MY_PROFILE,
-            headers: { 'AuthToken': this.dataStore.getAuthToken() },
-            success:(data) => {
-                console.log('get my profile data succesful : '+ JSON.stringify(data));
+            headers: { 'AuthToken': this._dataStore.getAuthToken() },
+            success: (data, textStatus) => {
+                console.log('get my profile data succesful: ' + JSON.stringify(data));
                 this.myPlayerProfile = data;
+                this._dataStore.setCachedMyProfileData(data);
+            },
+            error: (xhr, textStatus, errorThrown) => {
+                console.log(`get my profile data failed: textStatus: ${textStatus} error: ${errorThrown.toString()} `)
+                failCallback(textStatus, errorThrown);
             }
         });
     }
