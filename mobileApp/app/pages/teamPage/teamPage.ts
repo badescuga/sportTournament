@@ -1,4 +1,4 @@
-import {Page} from 'ionic-angular';
+import {Page, NavController} from 'ionic-angular';
 import {GeneralService} from './../../management/generalService';
 
 
@@ -8,6 +8,6 @@ import {GeneralService} from './../../management/generalService';
 
 })
 export class TeamPage {
-               constructor(private _generalService: GeneralService) {
+    constructor(private _generalService: GeneralService, private _nav: NavController) {
                }
 }

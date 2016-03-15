@@ -2,7 +2,7 @@ import {Injectable} from 'angular2/core';
 
 import {DataStore} from './dataStore';
 
-//declare var jQuery:any;
+declare var jQuery:any;
 
 @Injectable()
 export class GeneralService {
@@ -30,8 +30,8 @@ export class GeneralService {
             headers: { 'AuthToken': this._dataStore.getAuthToken() },
             success: (data, textStatus) => {
                 console.log('get my profile data succesful: ' + JSON.stringify(data));
-                this.myPlayerProfile = data;
-                this._dataStore.setCachedMyProfileData(data);
+                this.myPlayerProfile = data; 
+                this._dataStore.setCachedMyProfileData(data); //could also set in a setter; will think about it
             },
             error: (xhr, textStatus, errorThrown) => {
                 console.log(`get my profile data failed: textStatus: ${textStatus} error: ${errorThrown.toString()} `)

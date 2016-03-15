@@ -17,8 +17,8 @@ export class DataStore {
     }
 
     //my player profile
-    getCachedMyProfileData():JSON {
-           var temp: string = this._localStorage.get('cachedMyProfileData');
+    getCachedMyProfileData(): JSON {
+        var temp: string = this._localStorage.get('cachedMyProfileData');
         if (temp != null) {
             return JSON.parse(this._localStorage.get('cachedMyProfileData'));
         }

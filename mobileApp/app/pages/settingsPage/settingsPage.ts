@@ -1,4 +1,4 @@
-import {Page} from 'ionic-angular';
+import {Page, NavController} from 'ionic-angular';
 import {GeneralService} from './../../management/generalService';
 
 
@@ -7,4 +7,8 @@ import {GeneralService} from './../../management/generalService';
     providers:[GeneralService]
 
 })
-export class SettingsPage {}
+export class SettingsPage {
+        constructor(private _generalService: GeneralService, private _nav: NavController) {
+
+        }
+}
