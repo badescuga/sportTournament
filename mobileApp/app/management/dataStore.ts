@@ -5,6 +5,17 @@ import {LocalStorage} from 'angular2-local-storage/local_storage';
 export class DataStore {
     
    private _localStorage = new LocalStorage();
+   
+   //my auth token; will be hardcoded till we implement the login
+   getAuthToken() :string {
+     //return this._localStorage.get('cachedAuthToken');
+     return 'f3747c7d-804e-408c-a04f-27b861c062d5'; //hardcoded
+   }
+   
+   setAuthToken(token:string) {
+        this._localStorage.set('cachedAuthToken',token);
+   }
+   
     
     //tournament data
     getCachedTournamentData() {
