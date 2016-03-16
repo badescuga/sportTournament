@@ -7,10 +7,24 @@ import {GeneralService} from './../../management/generalService';
     providers: [GeneralService]
 })
 export class TournamentPage {
-    someTestNumber: number = 0;
+
     constructor(private _generalService: GeneralService, private _nav: NavController) {
         // to navigate 
         // http://www.joshmorony.com/a-simple-guide-to-navigation-in-ionic-2/
         // this._nav.push(SecondPage);
+    }
+
+    tournamentData: JSON;
+
+    onPageWillEnter() {
+        this.tournamentData = this._generalService.GetTournamentData();
+
+        this._generalService.UpdateTournamentData((testStatus, errorThrown) => {
+            //update error handle
+            alert(`Couldn't retrieve data. testStatus: ${testStatus} errorThrown: ${errorThrown}`);
+        }, () => { //finish callback
+            this.tournamentData = this._generalService.GetTournamentData();
+        });
+
     }
 }

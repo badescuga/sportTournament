@@ -2,13 +2,10 @@ import {Injectable} from 'angular2/core';
 
 import {DataStore} from './dataStore';
 
-declare var jQuery:any;
+declare var jQuery: any;
 
 @Injectable()
 export class GeneralService {
-
-    //testing
-    someNumber: number = 3;
 
     private _dataStore: DataStore = new DataStore();
 
@@ -18,36 +15,55 @@ export class GeneralService {
 
     //get my profile; does require auth token in header
     private API_MY_PROFILE = this.API_PATH + '/Player/GetMyProfile';
+    private API_GET_TOURNAMENT_DETAILS = this.API_PATH + '/Tournament/GetTournamentDetails';
+    private API_GET_TEAM_DETAILS = this.API_PATH + '/Team/GetTeamDetails'; // needs 'TeamID' param
+    private API_GET_PLAYER_SUMMARY = this.API_PATH + '/Player/PlayerSummary'; // needs 'PlayerID' param
+    private API_GET_MY_TEAM_DETAILS = ''; // not implemented yet; Talk to Razvan
+
     /////////////////////////////////////////
 
-    myPlayerProfile: JSON = this._dataStore.getCachedMyProfileData();
+    ///////////player profile
 
-    
-    UpdateMyPlayerProfile(failCallback) {
-       // console.dir(this.myPlayerProfile);
+    GetMyPlayeProfile(): JSON {
+        return this._dataStore.getCachedMyProfileData();
+    }
+
+    UpdateMyPlayerProfile(errorCallback, finishCallback) {
         jQuery.ajax({
             url: this.API_MY_PROFILE,
             headers: { 'AuthToken': this._dataStore.getAuthToken() },
             success: (data, textStatus) => {
-                console.log('get my profile data succesful: ' + JSON.stringify(data));
-                this.myPlayerProfile = data; 
-                this._dataStore.setCachedMyProfileData(data); //could also set in a setter; will think about it
+                // console.log('get my profile data succesful: ' + JSON.stringify(data));
+                this._dataStore.setCachedMyProfileData(data); //here i should check the json (after i pass to the request my last update time) if the json has changed or nor
+                finishCallback();
             },
             error: (xhr, textStatus, errorThrown) => {
                 console.log(`get my profile data failed: textStatus: ${textStatus} error: ${errorThrown.toString()} `)
-                failCallback(textStatus, errorThrown);
+                errorCallback(textStatus, errorThrown);
             }
         });
     }
 
-    get tournamentData() {
-        return {}; //need to come up with dummy data
+    /////////////tournament data
+    GetTournamentData(): JSON {
+        return this._dataStore.getCachedTournamentData();
     }
-    get teamData() {
-        return {};
+
+    UpdateTournamentData(errorCallback, finishCallback) {
+        jQuery.ajax({
+            url: this.API_GET_TOURNAMENT_DETAILS,
+            //   headers: { 'AuthToken': this._dataStore.getAuthToken() }, // no auth required, general API
+            success: (data, textStatus) => {
+                 console.log('get my tournament data succesful: ' + JSON.stringify(data));
+                this._dataStore.setCachedTournamentData(data); //here i should check the json (after i pass to the request my last update time) if the json has changed or nor
+                finishCallback();
+            },
+            error: (xhr, textStatus, errorThrown) => {
+                console.log(`get my tournament data failed: textStatus: ${textStatus} error: ${errorThrown.toString()} `)
+                errorCallback(textStatus, errorThrown);
+            }
+        });
     }
-    get playerData() {
-        return {};
-    }
+
 
 }

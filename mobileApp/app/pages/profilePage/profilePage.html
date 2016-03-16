@@ -1,12 +1,37 @@
-
 <ion-navbar *navbar>
-  <ion-title>
-Profile
-  </ion-title>
+    <ion-title>
+        Profile
+    </ion-title>
 </ion-navbar>
 
 <ion-content class="profilePage">
-   <p>
-  Here is a number, received from the general Service: {{someTestNumber}}.
-  </p>
+    <p>
+        Here is a number, received from the general Service: {{someTestNumber}}.
+    </p>
+<div>
+    <h3>Here is all my player data</h3>
+    <p>
+        Description: {{myPlayerProfile.Description}}
+    </p>
+      <p>
+        Favorite Player: {{myPlayerProfile.FavoritePlayer}}
+    </p>
+    
+      <p>
+        Favorite Team: {{myPlayerProfile.FavoriteTeam}}
+    </p>
+      <img src={{myPlayerProfile.PictureURL}} height="70" width="70">
+      <p>
+        Player ID: {{myPlayerProfile.PlayerID}}
+    </p>
+      <p>
+        Player Name: {{myPlayerProfile.PlayerName}}
+    </p>
+      <p>
+        Position: {{myPlayerProfile.Position}}
+    </p>
+      <p>
+        Team ID: {{myPlayerProfile.TeamID}}
+    </p>
+    </div>
 </ion-content>

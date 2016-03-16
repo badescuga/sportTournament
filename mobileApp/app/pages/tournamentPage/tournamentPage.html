@@ -3,5 +3,35 @@
 </ion-navbar>
 
 <ion-content padding class="tournamentPage">
-  <h2>Welcome to Ionic!</h2>
+      <p>
+        Description: {{tournamentData.Description}}
+    </p>  
+    <p>
+        End Date: {{tournamentData.EndDate}}
+    </p>  
+    <p>
+        Location: {{tournamentData.Location}}
+    </p>
+    <p>
+        Organizer: {{tournamentData.Organizer}}
+    </p>
+    <p>
+        StartDate: {{tournamentData.StartDate}}
+    </p>
+    <p>
+        TournamentID: {{tournamentData.TournamentID}}
+    </p>
+    <p>
+        TournamentName: {{tournamentData.TournamentName}}
+    </p>
+   
+        Matches:
+        <ul>
+            <li *ngFor="#item of tournamentData.matchSummaries; #i = index">
+             {{item.HomeTeam.TeamName}},id:{{item.HomeTeam.TeamID}} <b> VS </b> {{item.AwayTeam.TeamName}},id:{{item.AwayTeam.TeamID}} 
+            </li>
+
+        </ul>
+      
+    
 </ion-content>

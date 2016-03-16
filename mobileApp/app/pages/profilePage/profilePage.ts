@@ -12,13 +12,18 @@ export class ProfilePage {
 
     }
 
+    myPlayerProfile: JSON;
+
     onPageWillEnter() {
         //other lifecycle events:http://ionicframework.com/docs/v2/api/components/nav/NavController/
-       
-        this.someTestNumber = this._generalService.someNumber;//get value from service
+
+        this.myPlayerProfile = this._generalService.GetMyPlayeProfile();
+
         this._generalService.UpdateMyPlayerProfile((testStatus, errorThrown) => {
             //update error handle
             alert(`Couldn't retrieve data. testStatus: ${testStatus} errorThrown: ${errorThrown}`);
+        }, () => { //finish callback
+            this.myPlayerProfile = this._generalService.GetMyPlayeProfile();
         });
 
     }

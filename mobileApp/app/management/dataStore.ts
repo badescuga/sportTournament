@@ -37,6 +37,27 @@ export class DataStore {
 
     }
 
+    //my player team details
+    getCachedMyTeamData(): JSON {
+        var temp: string = this._localStorage.get('cachedMyTeamData');
+        if (temp != null) {
+            return JSON.parse(this._localStorage.get('cachedMyTeamData'));
+        }
+        else {
+            return null;
+        }
+    }
+
+    getCachedMyTeamDataTime() {
+        return this._localStorage.get('cachedMyTeamDataTime');
+    }
+
+    settCachedMyTeamData(data: JSON) {
+        this._localStorage.set('cachedMyTeamData', JSON.stringify(data));
+        this._localStorage.set('cachedMyTeamDataTime', Date.now().toString()); // not good; should use server time
+
+    }
+
 
     //tournament data
     getCachedTournamentData(): JSON {
