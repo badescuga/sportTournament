@@ -80,7 +80,7 @@ export class DataStore {
     }
 
     //team data
-    getCachedTeamData(teamId: string): JSON {
+    getCachedTeamData(teamId: number): JSON {
 
         var temp: string = this._localStorage.get('cachedTeamData' + teamId);
         if (temp != null) {
@@ -95,7 +95,7 @@ export class DataStore {
         return this._localStorage.get('cachedTeamDataTime' + teamId);
     }
 
-    setCachedTeamData(teamId: string, data: JSON) {
+    setCachedTeamData(teamId: number, data: JSON) {
         this._localStorage.set('cachedTeamData' + teamId, JSON.stringify(data));
         this._localStorage.set('cachedTeamDataTime' + teamId, Date.now().toString()); // not good; should use server time
     }

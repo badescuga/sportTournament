@@ -22,7 +22,7 @@ export class ProfilePage {
         this._generalService.UpdateMyPlayerProfile((testStatus, errorThrown) => {
             //update error handle
             alert(`Couldn't retrieve data. testStatus: ${testStatus} errorThrown: ${errorThrown}`);
-        }, () => { //finish callback
+        }, (dataWasUpdated:boolean) => { //finish callback
             this.myPlayerProfile = this._generalService.GetMyPlayeProfile();
         });
 

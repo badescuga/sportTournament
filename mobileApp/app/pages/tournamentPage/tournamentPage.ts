@@ -23,7 +23,7 @@ export class TournamentPage {
         this._generalService.UpdateTournamentData((testStatus, errorThrown) => {
             //update error handle
             alert(`Couldn't retrieve data. testStatus: ${testStatus} errorThrown: ${errorThrown}`);
-        }, () => { //finish callback
+        }, (dataWasUpdated:boolean) => { //finish callback
             this.tournamentData = this._generalService.GetTournamentData();
         });
 

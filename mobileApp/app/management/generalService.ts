@@ -35,7 +35,7 @@ export class GeneralService {
             success: (data, textStatus) => {
                 console.log('get my profile data succesful: ' + JSON.stringify(data));
                 this._dataStore.setCachedMyProfileData(data); //here i should check the json (after i pass to the request my last update time) if the json has changed or nor
-                finishCallback();
+                finishCallback(true); //should pass a boolean telling if the data has changed
             },
             error: (xhr, textStatus, errorThrown) => {
                 console.log(`get my profile data failed: textStatus: ${textStatus} error: ${errorThrown.toString()} `)
@@ -56,7 +56,7 @@ export class GeneralService {
             success: (data, textStatus) => {
                  console.log('get my tournament data succesful: ' + JSON.stringify(data));
                 this._dataStore.setCachedTournamentData(data); //here i should check the json (after i pass to the request my last update time) if the json has changed or nor
-                finishCallback();
+                finishCallback(true); //should pass a boolean telling if the data has changed
             },
             error: (xhr, textStatus, errorThrown) => {
                 console.log(`get my tournament data failed: textStatus: ${textStatus} error: ${errorThrown.toString()} `)
@@ -64,6 +64,28 @@ export class GeneralService {
             }
         });
     }
-
+    
+    //////////////team data
+    GetTeamData(teamId:number): JSON {
+        return this._dataStore.getCachedTeamData(teamId);
+    }
+    
+     UpdateTeamData(teamId, errorCallback, finishCallback) {
+         var uri = this.API_GET_TEAM_DETAILS+'?TeamID='+teamId; // need to find a js uri ORM
+         console.log('resulting uri: '+uri);
+        jQuery.ajax({
+            url: uri,
+            //   headers: { 'AuthToken': this._dataStore.getAuthToken() }, // no auth required, general API
+            success: (data, textStatus) => {
+                 console.log('get team data succesful: ' + JSON.stringify(data));
+                this._dataStore.setCachedTeamData(teamId, data); //here i should check the json (after i pass to the request my last update time) if the json has changed or nor
+                finishCallback(true); //should pass a boolean telling if the data has changed
+            },
+            error: (xhr, textStatus, errorThrown) => {
+                console.log(`get team data failed: textStatus: ${textStatus} error: ${errorThrown.toString()} `)
+                errorCallback(textStatus, errorThrown);
+            }
+        });
+    }
 
 }
