@@ -20,6 +20,11 @@ export class TeamPage {
 
     onPageWillEnter() {
         console.log('ON PAGE WILL ENTER TEAM PAGE; teamId: ' + this._teamId);
+        
+        if(this._teamId === undefined) {
+            console.log("don't have team ID yet; if teamId is undefined, it means that i'm looking at my own team page; Will implement my team soon; for now, i'm setting teamId = 1")
+            this._teamId = 1;    
+    }
 
         //other lifecycle events:http://ionicframework.com/docs/v2/api/components/nav/NavController/
 
