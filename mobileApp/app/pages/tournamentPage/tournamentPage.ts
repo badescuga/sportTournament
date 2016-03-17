@@ -1,5 +1,6 @@
 import {Page, NavController} from 'ionic-angular';
 import {GeneralService} from './../../management/generalService';
+import {TeamPage} from './../teamPage/teamPage';
 
 
 @Page({
@@ -26,5 +27,12 @@ export class TournamentPage {
             this.tournamentData = this._generalService.GetTournamentData();
         });
 
+    }
+    
+    goToTeam(teamId:number) {
+        console.log('clicked go to team page with id: '+teamId);
+         this._nav.push(TeamPage,{
+      teamId: teamId
+     });
     }
 }

@@ -33,7 +33,7 @@ export class GeneralService {
             url: this.API_MY_PROFILE,
             headers: { 'AuthToken': this._dataStore.getAuthToken() },
             success: (data, textStatus) => {
-                // console.log('get my profile data succesful: ' + JSON.stringify(data));
+                console.log('get my profile data succesful: ' + JSON.stringify(data));
                 this._dataStore.setCachedMyProfileData(data); //here i should check the json (after i pass to the request my last update time) if the json has changed or nor
                 finishCallback();
             },

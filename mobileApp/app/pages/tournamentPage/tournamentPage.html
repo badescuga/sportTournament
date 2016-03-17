@@ -1,14 +1,14 @@
 <ion-navbar *navbar>
-  <ion-title>tournament page</ion-title>
+    <ion-title>tournament page</ion-title>
 </ion-navbar>
 
 <ion-content padding class="tournamentPage">
-      <p>
+    <p>
         Description: {{tournamentData.Description}}
-    </p>  
+    </p>
     <p>
         End Date: {{tournamentData.EndDate}}
-    </p>  
+    </p>
     <p>
         Location: {{tournamentData.Location}}
     </p>
@@ -24,14 +24,21 @@
     <p>
         TournamentName: {{tournamentData.TournamentName}}
     </p>
-   
-        Matches:
-        <ul>
-            <li *ngFor="#item of tournamentData.matchSummaries; #i = index">
-             {{item.HomeTeam.TeamName}},id:{{item.HomeTeam.TeamID}} <b> VS </b> {{item.AwayTeam.TeamName}},id:{{item.AwayTeam.TeamID}} 
-            </li>
 
-        </ul>
-      
-    
+    Matches:
+    <ul>
+        <li *ngFor="#item of tournamentData.matchSummaries; #i = index">
+            <button (click)='goToTeam([item.HomeTeam.TeamID])'>
+                {{item.HomeTeam.TeamName}},id:{{item.HomeTeam.TeamID}}
+            </button>
+            <b> VS </b>
+            <button (click)='goToTeam([item.AwayTeam.TeamID])'>
+                {{item.AwayTeam.TeamName}},id:{{item.AwayTeam.TeamID}}
+            </button>
+
+        </li>
+
+    </ul>
+
+
 </ion-content>
