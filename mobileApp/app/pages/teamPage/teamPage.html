@@ -1,12 +1,39 @@
-
 <ion-navbar *navbar>
-  <ion-title>
-    Team
-  </ion-title>
+    <ion-title>
+        Team {{teamData.TeamName}} with ID {{teamData.TeamID}}
+    </ion-title>
 </ion-navbar>
 
-<ion-content class="teamPage">
-  <h2>{{teamData}}</h2>
-  <h3> check browser console for the data patern; fill first chance you get </h3>
+<ion-content padding class="teamPage">
+    <ion-list no-lines>
+        <ion-item-divider styleOne>
+            Team description:
+        </ion-item-divider>
+        <ion-item>{{teamData.Description}}</ion-item>
+    </ion-list>
+    <ion-list no-lines>
+        <ion-item-divider styleTwo>
+            Captain:
+        </ion-item-divider>
+        <ion-item>
+            <ion-avatar item-left>
+                <img src={{teamData.Captain.PictureURL}} width="80px" height="80px">
+            </ion-avatar>
+            <h2 bold>{{teamData.Captain.PlayerName}} with ID {{teamData.Captain.PlayerID}} </h2>
+            <h3>{{teamData.Captain.Position}}</h3>
+        </ion-item>
+    </ion-list>
+    <ion-list>
+        <ion-item-divider styleThree>
+            Players:
+        </ion-item-divider>
 
+        <ion-item *ngFor="#item of teamData.Players; #i = index">
+            <ion-avatar item-left>
+                <img src={{item.PictureURL}} width="80px" height="80px">
+            </ion-avatar>
+            <h2 bold>{{item.PlayerName}} with ID {{item.PlayerID}} </h2>
+            <h3>{{item.Position}}</h3>
+        </ion-item>
+    </ion-list>
 </ion-content>
