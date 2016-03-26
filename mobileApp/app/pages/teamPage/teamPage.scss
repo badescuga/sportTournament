@@ -1,3 +1,25 @@
 .teamPage {
+  ion-item-divider {
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
 
+  ion-item-divider[styleOne] {
+    background-color: #ffc520;
+  }
+
+  ion-item-divider[styleTwo] {
+    background-color: #51a7e8;
+  }
+
+  ion-item-divider[styleThree] {
+    background-color: #000;
+    color: #fff;
+  }
+
+  h2[bold] {
+    font-weight: bold;
+  }
 }

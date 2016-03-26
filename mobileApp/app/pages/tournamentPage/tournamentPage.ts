@@ -9,13 +9,15 @@ import {TeamPage} from './../teamPage/teamPage';
 })
 export class TournamentPage {
 
-    constructor(private _generalService: GeneralService, private _nav: NavController) {
+    constructor(private _generalService:GeneralService, private _nav:NavController) {
         // to navigate 
         // http://www.joshmorony.com/a-simple-guide-to-navigation-in-ionic-2/
         // this._nav.push(SecondPage);
     }
 
-    tournamentData: JSON;
+    tournamentData:JSON;
+    tournamentStartDate:number;
+    tournamentEndDate:number;
 
     onPageWillEnter() {
         this.tournamentData = this._generalService.GetTournamentData();
@@ -27,12 +29,14 @@ export class TournamentPage {
             this.tournamentData = this._generalService.GetTournamentData();
         });
 
+        this.tournamentStartDate = Date.parse(this.tournamentData["StartDate"]);
+        this.tournamentEndDate = Date.parse(this.tournamentData["EndDate"]);
     }
-    
+
     goToTeam(teamId:number) {
-        console.log('clicked go to team page with id: '+teamId);
-         this._nav.push(TeamPage,{
-      teamId: teamId
-     });
+        console.log('clicked go to team page with id: ' + teamId);
+        this._nav.push(TeamPage, {
+            teamId: teamId
+        });
     }
 }

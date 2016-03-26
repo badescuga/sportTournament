@@ -1,44 +1,53 @@
 <ion-navbar *navbar>
-    <ion-title>tournament page</ion-title>
+    <ion-title>{{tournamentData.TournamentName}} with ID {{tournamentData.TournamentID}}</ion-title>
 </ion-navbar>
 
 <ion-content padding class="tournamentPage">
-    <p>
-        Description: {{tournamentData.Description}}
-    </p>
-    <p>
-        End Date: {{tournamentData.EndDate}}
-    </p>
-    <p>
-        Location: {{tournamentData.Location}}
-    </p>
-    <p>
-        Organizer: {{tournamentData.Organizer}}
-    </p>
-    <p>
-        StartDate: {{tournamentData.StartDate}}
-    </p>
-    <p>
-        TournamentID: {{tournamentData.TournamentID}}
-    </p>
-    <p>
-        TournamentName: {{tournamentData.TournamentName}}
-    </p>
+    <ion-list no-lines>
+        <ion-item-divider styleOne>
+            Organizer
+        </ion-item-divider>
+        <ion-item>{{tournamentData.Organizer}}</ion-item>
+    </ion-list>
 
-    Matches:
-    <ul>
-        <li *ngFor="#item of tournamentData.matchSummaries; #i = index">
-            <button (click)='goToTeam([item.HomeTeam.TeamID])'>
+    <ion-list no-lines>
+        <ion-item-divider styleTwo>
+            Useful dates:
+        </ion-item-divider>
+        <ion-item><b>Start:</b> {{tournamentStartDate | date:'fullDate'}}</ion-item>
+        <ion-item><b>End:</b> {{tournamentEndDate | date:'fullDate'}}</ion-item>
+    </ion-list>
+
+    <ion-list no-lines>
+        <ion-item-divider styleOne>
+            Description:
+        </ion-item-divider>
+        <ion-item>{{tournamentData.Description}}</ion-item>
+    </ion-list>
+
+    <ion-list no-lines>
+        <ion-item-divider styleTwo>
+            Location:
+        </ion-item-divider>
+        <ion-item>{{tournamentData.Location}}</ion-item>
+    </ion-list>
+
+    <ion-list no-lines *ngFor="#item of tournamentData.matchSummaries; #i = index">
+        <ion-item-divider styleThree>
+            Match nr. {{i+1}}:
+        </ion-item-divider>
+        <ion-item>
+            <button block secondary large (click)='goToTeam([item.HomeTeam.TeamID])'>
                 {{item.HomeTeam.TeamName}},id:{{item.HomeTeam.TeamID}}
             </button>
-            <b> VS </b>
-            <button (click)='goToTeam([item.AwayTeam.TeamID])'>
+        </ion-item>
+        <ion-item>
+            <h2 center-bold> VS </h2>
+        </ion-item>
+        <ion-item>
+            <button block danger large (click)='goToTeam([item.AwayTeam.TeamID])'>
                 {{item.AwayTeam.TeamName}},id:{{item.AwayTeam.TeamID}}
             </button>
-
-        </li>
-
-    </ul>
-
-
+        </ion-item>
+    </ion-list>
 </ion-content>
