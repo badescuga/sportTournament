@@ -14,8 +14,8 @@
         <ion-item-divider styleTwo>
             Useful dates:
         </ion-item-divider>
-        <ion-item>Start: {{tournamentData.StartDate}}</ion-item>
-        <ion-item>End: {{tournamentData.EndDate}}</ion-item>
+        <ion-item><b>Start:</b> {{tournamentStartDate | date:'fullDate'}}</ion-item>
+        <ion-item><b>End:</b> {{tournamentEndDate | date:'fullDate'}}</ion-item>
     </ion-list>
 
     <ion-list no-lines>
