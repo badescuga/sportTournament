@@ -1,6 +1,7 @@
 .profilePage {
      text-align: center;
 }
+
 img[profile-image] {
     border-radius: 40%;
     margin-left: auto;
@@ -10,31 +11,38 @@ img[profile-image] {
     width: 60%;
     height: auto;
   }
+  
   .playerTitle{
       text-shadow: 1em;
       text-align: center;
   }
+  
   .descriptionStyleOne{
       text-shadow: 0.8em;
       text-align: center;
   }
+  
   .descriptionStyleTwo{
      text-shadow: 0.6em;
       text-align: center;
   }
+  
   .submenu{
       display: none;
   }
+  
   #getInfo, #info{
       padding: 5px;
     text-align: center;
     background-color: #e5eecc;
     border: solid 1px #c3c3c3; 
   }
+  
   #info{
        padding: 50px;
     display: none;
   }
+  
 .frontElement {
     position: relative;
     top: 0;
