@@ -2,6 +2,7 @@
 
 <ion-navbar *navbar>
     <ion-title>
+<<<<<<< HEAD
        {{myPlayerProfile.PlayerName}} ID: {{myPlayerProfile.PlayerID}}
     </ion-title>
 </ion-navbar>
@@ -55,3 +56,40 @@
          
     </ion-list>
 </ion-content>
+=======
+        {{myPlayerProfile.PlayerName}} with ID {{myPlayerProfile.PlayerID}}
+    </ion-title>
+</ion-navbar>
+
+<ion-content padding class="profilePage">
+    <img profile-image src={{myPlayerProfile.PictureURL}}>
+    <div team-info>
+        <h2>Team ID: {{myPlayerProfile.TeamID}}</h2>
+        <!-- We should use team name here instead of the team ID-->
+    </div>
+    <div position-info>
+        <h3>Position: {{myPlayerProfile.Position}}</h3>
+    </div>
+
+    <ion-list no-lines>
+        <ion-item-divider styleThree>
+            Description:
+        </ion-item-divider>
+        <ion-item>{{myPlayerProfile.Description}}</ion-item>
+    </ion-list>
+
+    <ion-list no-lines>
+        <ion-item-divider styleOne>
+            Favorite Player:
+        </ion-item-divider>
+        <ion-item>{{myPlayerProfile.FavoritePlayer}}</ion-item>
+    </ion-list>
+
+    <ion-list no-lines>
+        <ion-item-divider styleTwo>
+            Favorite Team:
+        </ion-item-divider>
+        <ion-item>{{myPlayerProfile.FavoriteTeam}}</ion-item>
+    </ion-list>
+</ion-content>
+>>>>>>> cafe8b5edfcb6adaffe5d9f2107507981726f8cb
