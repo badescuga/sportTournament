@@ -12,6 +12,7 @@ export class ProfilePage {
 
     }
 
+
     myPlayerProfile: JSON;
 
     onPageWillEnter() {
@@ -28,3 +29,4 @@ export class ProfilePage {
 
     }
 }
+
