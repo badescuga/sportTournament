@@ -1,3 +1,40 @@
 .profilePage {
+  ion-item-divider {
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
 
+  ion-item-divider[styleOne] {
+    background-color: #ffc520;
+  }
+
+  ion-item-divider[styleTwo] {
+    background-color: #51a7e8;
+  }
+
+  ion-item-divider[styleThree] {
+    background-color: #000;
+    color: #fff;
+  }
+
+  img[profile-image] {
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 70%;
+    height: auto;
+  }
+
+  div[team-info] {
+    text-align: center;
+    margin: 15px;
+  }
+
+  div[position-info] {
+    text-align: center;
+    margin: 15px;
+  }
 }
