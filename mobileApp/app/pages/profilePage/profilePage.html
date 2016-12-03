@@ -1,37 +1,57 @@
+
+
 <ion-navbar *navbar>
     <ion-title>
-        {{myPlayerProfile.PlayerName}} with ID {{myPlayerProfile.PlayerID}}
+<<<<<<< HEAD
+       {{myPlayerProfile.PlayerName}} ID: {{myPlayerProfile.PlayerID}}
     </ion-title>
 </ion-navbar>
 
-<ion-content padding class="profilePage">
-    <img profile-image src={{myPlayerProfile.PictureURL}}>
-    <div team-info>
-        <h2>Team ID: {{myPlayerProfile.TeamID}}</h2>
-        <!-- We should use team name here instead of the team ID-->
-    </div>
-    <div position-info>
-        <h3>Position: {{myPlayerProfile.Position}}</h3>
-    </div>
-
-    <ion-list no-lines>
-        <ion-item-divider styleThree>
-            Description:
-        </ion-item-divider>
-        <ion-item>{{myPlayerProfile.Description}}</ion-item>
-    </ion-list>
-
-    <ion-list no-lines>
-        <ion-item-divider styleOne>
-            Favorite Player:
-        </ion-item-divider>
-        <ion-item>{{myPlayerProfile.FavoritePlayer}}</ion-item>
-    </ion-list>
-
-    <ion-list no-lines>
-        <ion-item-divider styleTwo>
-            Favorite Team:
-        </ion-item-divider>
-        <ion-item>{{myPlayerProfile.FavoriteTeam}}</ion-item>
+<ion-content class="profilePage">
+    <ion-list>
+    
+     <img profile-image src={{myPlayerProfile.PictureURL}} height="70" width="70">
+    
+   <ion-item class="playerTitle bar" >
+        <h1>Defender</h1>
+   </ion-item>
+        
+        <ion-item id="#getInfo" class="frontElement bar bar-subheader descriptionStyleOne">
+                Description: 
+        </ion-item>
+          <ion-item id="#info" class=" hiddenElement descriptionStyleTwo">      
+           <p>{{myPlayerProfile.Description}}</p> 
+          </ion-item> 
+                                
+        <ion-item id="#getInfo" class="frontElement bar bar-subheader descriptionStyleOne">            
+                Favorite Player:  
+        </ion-item>             
+        <ion-item id="#info" class=" hiddenElement descriptionStyleTwo">  
+            <p>{{myPlayerProfile.FavoritePlayer}}</p> 
+        </ion-item>    
+        
+                           
+      <ion-item id="#getInfo"  class="frontElement  bar bar-subheader descriptionStyleOne">          
+               Favorite Team:                  
+        </ion-item>
+        <ion-item id="#info" class="hiddenElement descriptionStyleTwo">     
+            <p>{{myPlayerProfile.FavoriteTeam}}</p>
+        
+        </ion-item> 
+        
+     <ion-item id="#getInfo" class="frontElement bar bar-subheader descriptionStyleOne">            
+              Position:                
+        </ion-item>
+        <ion-item id="#info" class=" hiddenElement descriptionStyleTwo">      
+            <p>{{myPlayerProfile.Position}}</p>
+        
+          </ion-item> 
+               
+     <ion-item id="#getInfo" class="frontElement bar bar-subheader descriptionStyleOne">           
+             Team ID:            
+         </ion-item>   
+               
+            <p id="#info" class="hiddenElement descriptionStyleTwo"> {{myPlayerProfile.TeamID}}</p>
+         
     </ion-list>
 </ion-content>
